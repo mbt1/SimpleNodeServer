@@ -1,0 +1,13 @@
+{
+    "name": "Node.js",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "runArgs": [ "-u", "node" ],
+    "settings": { 
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": ["dbaeumer.vscode-eslint"],
+    "forwardPorts": [3000]
+}
