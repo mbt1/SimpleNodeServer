@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Current Server Time</title>
+    <script>
+        // Function to update time on page
+        function updateTime() {
+            // Fetch time from server
+            fetch('/time')
+                .then(response => response.json())
+                .then(data => {
+                    // Update time on page
+                    document.getElementById('time').textContent = data.time;
+                });
+        }
+
+        // Update time when page loads
+        updateTime();
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+    </script>
+</head>
+<body>
+    <h1>Current Server Time:</h1>
+    <p id="time"></p>
+</body>
+</html>

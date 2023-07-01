@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/mbt1/SimpleNodeServer#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "network-js": "^2.1.0",
+    "pidusage": "^3.0.2"
   }
 }
