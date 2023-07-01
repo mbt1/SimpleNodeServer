@@ -1,24 +1,27 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-
+let requestCount = 0;
 // Serve files from the public directory
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
+  requestCount++;
     res.send('Hello World!');
 });
 
 app.get('/time', (req, res) => {
+  requestCount++;
     res.send({ time: new Date().toISOString() });
 });
 
 const os = require('os');
 const pidusage = require('pidusage');
-const network = require('network-js');
 
 setInterval(() => {
   // Memory stats
+  console.log('---------------------------------');
+  console.log('Total Requests:', requestCount);
   console.log('Total Memory:', os.totalmem());
   console.log('Free Memory:', os.freemem());
   const memoryUsage = process.memoryUsage();
@@ -27,11 +30,6 @@ setInterval(() => {
   // CPU stats
   pidusage(process.pid, (err, stats) => {
     console.log('CPU Usage:', stats.cpu);
-  });
-
-  // Network stats
-  network.getThroughput('eth0', 2000).then(throughput => {
-    console.log('Network Throughput:', throughput);
   });
 
 }, 5000);
